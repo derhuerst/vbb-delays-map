@@ -1,0 +1,11 @@
+{
+	"name":        "vbb-delays-map",
+	"description": "A map showing delays of public transport in Berlin.",
+	"version":     "0.1.0",
+	"keywords":    ["map", "public", "transport", "delays", "disruptions"],
+	"author":      "Jannis R <mail@jannisr.de>",
+	"homepage":    "https://github.com/derhuerst/vbb-delays-map",
+	"repository":  "derhuerst/vbb-delays-map",
+	"issues":      "https://github.com/derhuerst/vbb-delays-map/issues",
+	"license":     "ISC"
+}
