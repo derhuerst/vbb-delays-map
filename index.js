@@ -35,9 +35,13 @@ map.on('load', () => {
 		paint: {
 			'circle-radius': {base: 1.5, stops: [[1, 1.5], [20, 30]]},
 			'circle-color': {
-				property: 'weight',
-				stops: [[0, '#6e0d00'], [15000, '#fa1d00']]
+				property: 'delays',
+				stops: [[0, '#eebb00'], [.8, '#ee2200']]
 			}
+			// 'circle-color': {
+			// 	property: 'weight',
+			// 	stops: [[0, '#6e0d00'], [15000, '#fa1d00']]
+			// }
 		}
 	})
 })

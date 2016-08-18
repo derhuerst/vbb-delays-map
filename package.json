@@ -11,6 +11,9 @@
 	"devDependencies": {
 		"vbb-stations": "^2"
 	},
+	"peerDependencies": {
+		"vbb-delays": "^0.1"
+	},
 	"scripts": {
 		"build": "node build.js > stations.geojson",
 		"ssh": "ssh -i ./.scaleway root@vbb-delays-map.jannisr.de",
