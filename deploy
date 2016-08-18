@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rsync -rav --delete -e 'ssh -i ./.scaleway' \
+	--exclude '.*' \
+	--exclude node_modules \
+	. root@vbb-delays-map.jannisr.de:/var/www/vbb-delays-map.jannisr.de/
