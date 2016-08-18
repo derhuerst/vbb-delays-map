@@ -1,8 +1,6 @@
 'use strict'
 
 const stations = require('vbb-stations')
-const fs = require('fs')
-const path = require('path')
 
 let data = {
 	type: 'FeatureCollection',
@@ -13,4 +11,4 @@ let data = {
 	}))
 }
 
-fs.writeFileSync(path.join(__dirname, 'stations.geojson'), JSON.stringify(data))
+process.stdout.write(JSON.stringify(data) + '\n')

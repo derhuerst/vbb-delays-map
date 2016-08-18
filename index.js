@@ -4,9 +4,9 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JlZndkYSIsImEiOiJjaXBxeDhxYm8wMDc0aTZucG94d
 const map = new mapboxgl.Map({
 	container: 'map',
 	style: 'mapbox://styles/mapbox/dark-v9',
-	zoom: 12,
+	zoom: 13,
 	hash: true,
-	center: [13.4, 51.4]
+	center: [13.386, 52.518]
 })
 map.addControl(new mapboxgl.Navigation())
 
@@ -27,7 +27,7 @@ window.addEventListener('resize', resize)
 
 
 map.on('load', () => {
-	map.addSource('stations', {type: 'geojson', data: '/stations.geojson.gz'})
+	map.addSource('stations', {type: 'geojson', data: '/stations.geojson'})
 	map.addLayer({
 		id: 'points',
 		type: 'circle',
