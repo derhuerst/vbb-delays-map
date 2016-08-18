@@ -7,5 +7,11 @@
 	"homepage":    "https://github.com/derhuerst/vbb-delays-map",
 	"repository":  "derhuerst/vbb-delays-map",
 	"issues":      "https://github.com/derhuerst/vbb-delays-map/issues",
-	"license":     "ISC"
+	"license":     "ISC",
+	"devDependencies": {
+		"vbb-stations": "^2"
+	},
+	"scripts": {
+		"build": "node build.js | gzip > stations.geojson.gz"
+	}
 }

@@ -26,4 +26,18 @@ window.addEventListener('resize', resize)
 
 
 
-map.addSource('some id', {data: '//stations.geojson'})
+map.on('load', () => {
+	map.addSource('stations', {type: 'geojson', data: '/stations.geojson.gz'})
+	map.addLayer({
+		id: 'points',
+		type: 'circle',
+		source: 'stations',
+		paint: {
+			'circle-radius': {base: 1.5, stops: [[1, 1.5], [20, 30]]},
+			'circle-color': {
+				property: 'weight',
+				stops: [[0, '#6e0d00'], [15000, '#fa1d00']]
+			}
+		}
+	})
+})
