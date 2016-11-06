@@ -1,5 +1,8 @@
 'use strict'
 
+const ms = require('pretty-ms')
+const short = require('vbb-short-station-name')
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JlZndkYSIsImEiOiJjaXBxeDhxYm8wMDc0aTZucG94d29zdnRyIn0.oKynfvvLSuyxT3PglBMF4w'
 const map = new mapboxgl.Map({
 	container: 'map',
@@ -30,6 +33,7 @@ map.on('load', () => {
 	map.addSource('stations', {type: 'geojson', data: '/stations.geojson'})
 	map.addLayer({
 		id: 'points',
+		interactive: true,
 		type: 'circle',
 		source: 'stations',
 		paint: {
@@ -44,4 +48,25 @@ map.on('load', () => {
 			// }
 		}
 	})
+})
+
+
+
+map.on('click', (e) => {
+	const station = map.queryRenderedFeatures(e.point, {layers: ['points']})[0]
+	if (!station) return
+	const name = short(station.properties.name)
+	const mean = 'number' === typeof station.properties.mean
+		? ms(station.properties.mean * 1000, {secDecimalDigits: 0}) : '?'
+	const popup = new mapboxgl.Popup()
+		.setLngLat(station.geometry.coordinates).setHTML(`
+			<h1>${name}</h1>
+			<p>durchschnittlich ${mean} Verspätung</p>
+		`)
+	popup.addTo(map)
+})
+
+map.on('mousemove', (e) => {
+	const station = map.queryRenderedFeatures(e.point, {layers: ['points']})[0]
+	map.getCanvas().style.cursor = station ? 'pointer' : ''
 })

@@ -8,6 +8,10 @@
 	"repository":  "derhuerst/vbb-delays-map",
 	"issues":      "https://github.com/derhuerst/vbb-delays-map/issues",
 	"license":     "ISC",
+	"dependencies": {
+		"vbb-short-station-name": "^0.1",
+		"pretty-ms": "^2.1"
+	},
 	"devDependencies": {
 		"vbb-stations": "^2",
 		"browserify": "^13.1.1",
