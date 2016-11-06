@@ -2,6 +2,22 @@
 
 const ms = require('pretty-ms')
 const short = require('vbb-short-station-name')
+const linesAt = require('vbb-lines-at')
+const parseLine = require('vbb-parse-line')
+const products = require('vbb-util/products')
+const colors = require('vbb-util/lines/colors')
+
+
+
+const colorsOfLine = (l) => {
+	const parsed = parseLine(l.name)
+	if (parsed.metro) return colors.metro
+	if (!colors[l.type] || !colors[l.type][l.name])
+		return {fg: 'white', bg: products[l.type].color}
+	return colors[l.type][l.name]
+}
+
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JlZndkYSIsImEiOiJjaXBxeDhxYm8wMDc0aTZucG94d29zdnRyIn0.oKynfvvLSuyxT3PglBMF4w'
 const map = new mapboxgl.Map({
@@ -58,10 +74,21 @@ map.on('click', (e) => {
 	const name = short(station.properties.name)
 	const mean = 'number' === typeof station.properties.mean
 		? ms(station.properties.mean * 1000, {secDecimalDigits: 0}) : '?'
+
+	const lines = (linesAt[station.properties.id + ''] || []).map((l) => {
+		const {fg, bg} = colorsOfLine(l)
+		return `<span
+			class="line ${l.type}"
+			style="color: ${fg}; background-color: ${bg}"
+		>${l.name}</span>`
+	})
+
 	const popup = new mapboxgl.Popup()
-		.setLngLat(station.geometry.coordinates).setHTML(`
+		.setLngLat(station.geometry.coordinates)
+		.setHTML(`
 			<h1>${name}</h1>
 			<p>durchschnittlich ${mean} Verspätung</p>
+			<p>${lines.join(' ')}</p>
 		`)
 	popup.addTo(map)
 })
