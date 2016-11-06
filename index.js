@@ -33,10 +33,10 @@ map.on('load', () => {
 		type: 'circle',
 		source: 'stations',
 		paint: {
-			'circle-radius': {base: 1.5, stops: [[1, 1.5], [20, 30]]},
+			'circle-radius': {base: 1.5, stops: [[1, 1], [20, 35]]},
 			'circle-color': {
 				property: 'mean',
-				stops: [[0, '#eebb00'], [180, '#ee2200']]
+				stops: [[0, '#2ecc71'], [90, '#eebb00'], [210, '#ee2200']]
 			}
 			// 'circle-color': {
 			// 	property: 'weight',

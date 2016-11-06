@@ -22,7 +22,7 @@
 		"bundle": "browserify -g [ babelify --presets es2015 ] index.js > bundle.js",
 		"minify": "uglifyjs -mc --screw-ie8 -- bundle.js > bundle.min.js",
 		"build": "npm run bundle && npm run minify",
-		"ssh": "ssh -i ./.scaleway root@vbb-delays-map.jannisr.de",
+		"ssh": "ssh -i ./.okfn root@vbb-delays-map.jannisr.de",
 		"deploy": "./deploy"
 	}
 }

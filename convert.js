@@ -17,14 +17,18 @@ for (let station in delays) {
 
 let data = {
 	type: 'FeatureCollection',
-	features: stations('all').map((station) => ({
-		type: 'Feature',
-		properties: {
-			name: station.name, id: station.id, weight: station.weight,
-			mean: delays[station.id]
-		},
-		geometry: {type: 'Point', coordinates: [station.longitude,station.latitude]}
-	}))
+	features: stations('all')
+		.filter((station) => 'number' === typeof delays[station.id])
+		.map((station) => ({
+			type: 'Feature',
+			properties: {
+				name: station.name, id: station.id, weight: station.weight,
+				mean: delays[station.id]
+			},
+			geometry: {
+				type: 'Point', coordinates: [station.longitude, station.latitude]
+			}
+		}))
 }
 
 process.stdout.write(JSON.stringify(data) + '\n')
