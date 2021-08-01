@@ -12,7 +12,7 @@
 		"vbb-short-station-name": "^0.1",
 		"pretty-ms": "^2.1",
 		"vbb-lines-at": "^1.2",
-		"vbb-parse-line": "^0.2",
+		"vbb-parse-line": "^0.3.1",
 		"vbb-util": "^0.10.1"
 	},
 	"devDependencies": {
