@@ -9,7 +9,7 @@
 	"issues":      "https://github.com/derhuerst/vbb-delays-map/issues",
 	"license":     "ISC",
 	"dependencies": {
-		"vbb-short-station-name": "^0.1",
+		"vbb-short-station-name": "^0.4.0",
 		"pretty-ms": "^2.1",
 		"vbb-lines-at": "^1.2",
 		"vbb-parse-line": "^0.2",
