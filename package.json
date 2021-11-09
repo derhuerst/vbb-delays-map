@@ -20,7 +20,7 @@
 		"browserify": "^13.1.1",
 		"babelify": "^7.3",
 		"babel-preset-es2015": "^6.18",
-		"uglify-js": "^2.7.4"
+		"uglify-js": "^3.14.3"
 	},
 	"peerDependencies": {
 		"vbb-delays": "^0.1"
